@@ -29,6 +29,7 @@ namespace Rapi
 CAutolabTracker::CAutolabTracker(std::string devName, std::string robotName,
   std::string hostName, int port ) : ALocalizer2d(devName)
 {
+	printf("Hi zhao, I am change some things in init()\n");
   mPose.setName("tracker");
   mRobotName = robotName;
   mRedisClient = CRedisClient::getInstance(hostName, port);
