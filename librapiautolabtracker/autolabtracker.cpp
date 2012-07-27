@@ -46,6 +46,11 @@ void CAutolabTracker::setEnabled( bool enable )
 {
   mFgEnabled = enable;
 }
+
+bool CAutolabTracker::test()
+{
+	return true;
+}
 //----------------------------------------------------------------------------
 int CAutolabTracker::init()
 {

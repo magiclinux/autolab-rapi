@@ -86,6 +86,7 @@ class CAutolabTracker : public ALocalizer2d
      * @return true if new, false otherwise
      */
     bool isNew();
+    bool test();
 
   private:
     /** Redis client */
