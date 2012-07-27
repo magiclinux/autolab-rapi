@@ -28,6 +28,7 @@ namespace Rapi
 //-----------------------------------------------------------------------------
 ADevice::ADevice ( std::string devName )
 {
+	printf("ADevice Zhao \n");
   mDeviceName = devName;
   mFgEnabled = false;
   mDataLogger = NULL;

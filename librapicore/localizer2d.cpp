@@ -27,6 +27,7 @@ namespace Rapi
 ALocalizer2d::ALocalizer2d ( std::string devName )
     : ADevice ( devName )
 {
+	printf("localizer2d zhao\n");
   mCoordinateSystemOffset = CPose2d( 0.0, 0.0, 0.0 );
 }
 //-----------------------------------------------------------------------------
