@@ -63,7 +63,7 @@ void CAutolabTracker::setCurrentCameraId(int cId)
 	currentCameraId = cId;
 	return;
 }
-int getCurrentCameraId()
+int CAutolabTracker::getCurrentCameraId()
 {
 	return currentCameraId;
 }
