@@ -81,6 +81,8 @@ class CAutolabTracker : public ALocalizer2d
      * @return true if valid, false otherwise
      */
     bool isValid();
+    void setCurrentCameraId(int cId);
+    int getCurrentCameraId();
     /**
      * Check if the data is new or from a previous update
      * @return true if new, false otherwise
@@ -97,6 +99,7 @@ class CAutolabTracker : public ALocalizer2d
     int mCameraId;
     /** Flags if data is new */
     bool mFgNewData;
+    int currentCameraId;
 };
 
 } // namespace

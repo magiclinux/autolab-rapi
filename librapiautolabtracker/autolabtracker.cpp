@@ -57,7 +57,55 @@ int CAutolabTracker::init()
 {
   return 1;
 }
+
+void CAutolabTracker::setCurrentCameraId(int cId)
+{
+	currentCameraId = cId;
+	return;
+}
+int getCurrentCameraId()
+{
+	return currentCameraId;
+}
+//
+void CAutolabTracker::updateData( const double dt )
+{
+  static double lastTimeStamp;
+  double ts, x, y, a;
+  std::string value;
+
+  if (mFgEnabled) {
+    lastTimeStamp = mTimeStamp;
+    char ccid = currentCameraId + '0';
+    mCameraId = currentCameraId;
+    if (mRedisClient->get( "camera"+ccid , value ) == 0) {
+      PRT_WARN0("Failed to read position information from tracker");
+      return;
+    }
+    //printf("REDIS %s\n", value.c_str());
+    if (sscanf(value.c_str(), "%lf %lf %lf\n",
+      &x, &y, &ts)
+       != 3) {
+      PRT_WARN0("Failed to parse data from Tracker");
+    }
+    if (mCameraId >= 0) {
+    	a=0;
+      mPose.mX = x;
+      mPose.mY = y;
+      mPose.mYaw = a;
+      mTimeStamp = ts;
+      if (mTimeStamp != lastTimeStamp)
+        mFgNewData = true;
+      else
+        mFgNewData = false;
+      }
+      else {
+        mFgNewData = false;
+    }
+  }
+}
 //----------------------------------------------------------------------------
+/*
 void CAutolabTracker::updateData( const double dt )
 {
   static double lastTimeStamp;
@@ -91,6 +139,7 @@ void CAutolabTracker::updateData( const double dt )
     }
   }
 }
+*/
 //-----------------------------------------------------------------------------
 bool CAutolabTracker::isNew()
 {
