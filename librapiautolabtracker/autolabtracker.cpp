@@ -76,16 +76,16 @@ void CAutolabTracker::updateData( const double dt )
 
   if (mFgEnabled) {
     lastTimeStamp = mTimeStamp;
-    char ccid = currentCameraId + '0';
-    mCameraId = currentCameraId;
-    if (mRedisClient->get( "camera"+ccid , value ) == 0) {
+    //char ccid = currentCameraId + '0';
+    //mCameraId = currentCameraId;
+    if (mRedisClient->get( "camera" , value ) == 0) {
       PRT_WARN0("Failed to read position information from tracker");
       return;
     }
     //printf("REDIS %s\n", value.c_str());
-    if (sscanf(value.c_str(), "%lf %lf %lf\n",
-      &x, &y, &ts)
-       != 3) {
+    if (sscanf(value.c_str(), "%lf %lf %lf %d\n",
+      &x, &y, &ts,&mCameraId)
+       != 4) {
       PRT_WARN0("Failed to parse data from Tracker");
     }
     if (mCameraId >= 0) {
