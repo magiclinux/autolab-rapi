@@ -83,13 +83,13 @@ void CAutolabTracker::updateData( const double dt )
       return;
     }
     //printf("REDIS %s\n", value.c_str());
-    if (sscanf(value.c_str(), "%lf %lf %lf %d\n",
-      &x, &y, &ts,&mCameraId)
-       != 4) {
+    if (sscanf(value.c_str(), "%lf %lf %lf %lf %d\n",
+      &x, &y, &a, &ts,&mCameraId)
+       != 5) {
       PRT_WARN0("Failed to parse data from Tracker");
     }
     if (mCameraId >= 0) {
-    	a=0;
+    	//a=0;
       mPose.mX = x;
       mPose.mY = y;
       mPose.mYaw = a;
