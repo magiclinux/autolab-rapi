@@ -80,7 +80,7 @@ class CAutolabTracker : public ALocalizer2d
      * Checks if tracker data is valid or not
      * @return true if valid, false otherwise
      */
-   virtual void writeToDataBase(const double dt);
+   virtual void writeToDataBase(const double dt, std::string robotName, std::string value);// add by zhao 2012 SEP 23, 15:31
 
     bool isValid();
     void setCurrentCameraId(int cId);
