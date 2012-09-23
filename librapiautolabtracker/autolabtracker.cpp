@@ -108,7 +108,8 @@ void CAutolabTracker::updateData( const double dt )
  void CAutolabTracker::writeToDataBase(const double dt, std::string robotName, std::string value)
 {
 	std::string key = "robot"+robotName;
-    	if (mRedisClient->set(key , value.c_str() ) == 0) 
+	printf("key : %s, value : %s\n",key.c_str(),value.c_str());
+    	if (mRedisClient->set(key.c_str() , value.c_str() ) == 0) 
 	{
       			PRT_WARN0("Failed to write position information from tracker");
       			return;
