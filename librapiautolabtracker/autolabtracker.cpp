@@ -105,7 +105,7 @@ void CAutolabTracker::updateData( const double dt )
   }
 }
 // add by zhao 2012 SEP 23, 15:31
-virtual void CAutolabTracker::writeToDataBase(const double dt, std::string robotName, std::string value)
+ void CAutolabTracker::writeToDataBase(const double dt, std::string robotName, std::string value)
 {
 	std::string key = "robot"+robotName;
     	if (mRedisClient->set(key , value ) == 0) 
